@@ -42,4 +42,22 @@ public class Position {
     public String toString() {
         return String.format("%s %s", coordinates, direction.getString());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Position position = (Position) o;
+
+        if (!coordinates.equals(position.coordinates)) return false;
+        return direction == position.direction;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = coordinates.hashCode();
+        result = 31 * result + direction.hashCode();
+        return result;
+    }
 }
